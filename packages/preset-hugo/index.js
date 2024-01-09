@@ -143,13 +143,6 @@ export default class HugoPreset {
         },
       },
       {
-        type: "checkin",
-        post: {
-          path: "content/checkins/{slug}.md",
-          url: "checkins/{slug}",
-        },
-      },
-      {
         type: "event",
         post: {
           path: "content/events/{slug}.md",
@@ -223,7 +216,6 @@ export default class HugoPreset {
       ...(properties.end && { end: properties.end }),
       ...(properties.rsvp && { rsvp: properties.rsvp }),
       ...(properties.location && { location: properties.location }),
-      ...(properties.checkin && { checkin: properties.checkin }),
       ...(properties.audio && { audio: properties.audio }),
       ...(properties.photo && { images: properties.photo }),
       ...(properties.video && { videos: properties.video }),
