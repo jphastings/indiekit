@@ -21,7 +21,6 @@ export default class JekyllPreset {
     return [
       {
         type: "article",
-        name: "Article",
         post: {
           path: "_posts/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "{yyyy}/{MM}/{dd}/{slug}",
@@ -32,7 +31,6 @@ export default class JekyllPreset {
       },
       {
         type: "note",
-        name: "Note",
         post: {
           path: "_notes/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "notes/{yyyy}/{MM}/{dd}/{slug}",
@@ -40,7 +38,6 @@ export default class JekyllPreset {
       },
       {
         type: "photo",
-        name: "Photo",
         post: {
           path: "_photos/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "photos/{yyyy}/{MM}/{dd}/{slug}",
@@ -51,7 +48,6 @@ export default class JekyllPreset {
       },
       {
         type: "video",
-        name: "Video",
         post: {
           path: "_videos/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "videos/{yyyy}/{MM}/{dd}/{slug}",
@@ -62,7 +58,6 @@ export default class JekyllPreset {
       },
       {
         type: "audio",
-        name: "Audio",
         post: {
           path: "_audio/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "audio/{yyyy}/{MM}/{dd}/{slug}",
@@ -73,7 +68,6 @@ export default class JekyllPreset {
       },
       {
         type: "bookmark",
-        name: "Bookmark",
         post: {
           path: "_bookmarks/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "bookmarks/{yyyy}/{MM}/{dd}/{slug}",
@@ -81,7 +75,6 @@ export default class JekyllPreset {
       },
       {
         type: "checkin",
-        name: "Checkin",
         post: {
           path: "_checkins/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "checkins/{yyyy}/{MM}/{dd}/{slug}",
@@ -89,7 +82,6 @@ export default class JekyllPreset {
       },
       {
         type: "event",
-        name: "Event",
         post: {
           path: "_events/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "events/{yyyy}/{MM}/{dd}/{slug}",
@@ -97,7 +89,6 @@ export default class JekyllPreset {
       },
       {
         type: "rsvp",
-        name: "RSVP",
         post: {
           path: "_replies/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "replies/{yyyy}/{MM}/{dd}/{slug}",
@@ -105,7 +96,6 @@ export default class JekyllPreset {
       },
       {
         type: "reply",
-        name: "Reply",
         post: {
           path: "_replies/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "replies/{yyyy}/{MM}/{dd}/{slug}",
@@ -113,7 +103,6 @@ export default class JekyllPreset {
       },
       {
         type: "repost",
-        name: "Repost",
         post: {
           path: "_reposts/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "reposts/{yyyy}/{MM}/{dd}/{slug}",
@@ -121,7 +110,6 @@ export default class JekyllPreset {
       },
       {
         type: "like",
-        name: "Like",
         post: {
           path: "_likes/{yyyy}-{MM}-{dd}-{slug}.md",
           url: "likes/{yyyy}/{MM}/{dd}/{slug}",

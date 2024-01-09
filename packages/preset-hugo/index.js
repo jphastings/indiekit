@@ -86,7 +86,6 @@ export default class HugoPreset {
     return [
       {
         type: "article",
-        name: "Article",
         post: {
           path: "content/articles/{slug}.md",
           url: "articles/{slug}",
@@ -98,7 +97,6 @@ export default class HugoPreset {
       },
       {
         type: "note",
-        name: "Note",
         post: {
           path: "content/notes/{slug}.md",
           url: "notes/{slug}",
@@ -106,7 +104,6 @@ export default class HugoPreset {
       },
       {
         type: "photo",
-        name: "Photo",
         post: {
           path: "content/photos/{slug}.md",
           url: "photos/{slug}",
@@ -118,7 +115,6 @@ export default class HugoPreset {
       },
       {
         type: "video",
-        name: "Video",
         post: {
           path: "content/videos/{slug}.md",
           url: "videos/{slug}",
@@ -130,7 +126,6 @@ export default class HugoPreset {
       },
       {
         type: "audio",
-        name: "Audio",
         post: {
           path: "content/audio/{slug}.md",
           url: "audio/{slug}",
@@ -142,7 +137,6 @@ export default class HugoPreset {
       },
       {
         type: "bookmark",
-        name: "Bookmark",
         post: {
           path: "content/bookmarks/{slug}.md",
           url: "bookmarks/{slug}",
@@ -150,7 +144,6 @@ export default class HugoPreset {
       },
       {
         type: "checkin",
-        name: "Checkin",
         post: {
           path: "content/checkins/{slug}.md",
           url: "checkins/{slug}",
@@ -158,7 +151,6 @@ export default class HugoPreset {
       },
       {
         type: "event",
-        name: "Event",
         post: {
           path: "content/events/{slug}.md",
           url: "events/{slug}",
@@ -166,7 +158,6 @@ export default class HugoPreset {
       },
       {
         type: "rsvp",
-        name: "RSVP",
         post: {
           path: "content/replies/{slug}.md",
           url: "replies/{slug}",
@@ -174,7 +165,6 @@ export default class HugoPreset {
       },
       {
         type: "reply",
-        name: "Reply",
         post: {
           path: "content/replies/{slug}.md",
           url: "replies/{slug}",
@@ -182,7 +172,6 @@ export default class HugoPreset {
       },
       {
         type: "repost",
-        name: "Repost",
         post: {
           path: "content/reposts/{slug}.md",
           url: "reposts/{slug}",
@@ -190,7 +179,6 @@ export default class HugoPreset {
       },
       {
         type: "like",
-        name: "Like",
         post: {
           path: "content/likes/{slug}.md",
           url: "likes/{slug}",

@@ -40,17 +40,19 @@ describe("indiekit/lib/post-types", () => {
     const { publication } = await indiekit.bootstrap();
     const result = getPostTypes(publication);
 
-    assert.equal(result[0].name, "Custom note post type");
+    assert.equal(result[1].name, "Custom note post type");
   });
 
-  it("Returns array if no preset or custom post types", async () => {
+  it("Returns default if no preset or custom post types", async () => {
     const config = await testConfig({
       usePostTypes: false,
       usePreset: false,
     });
     const indiekit = await Indiekit.initialize({ config });
     const { publication } = await indiekit.bootstrap();
+    const result = getPostTypes(publication);
 
-    assert.deepEqual(getPostTypes(publication), []);
+    assert.equal(result[0].name, "Article");
+    assert.equal(result[11].name, "Like");
   });
 });

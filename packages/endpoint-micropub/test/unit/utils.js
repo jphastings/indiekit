@@ -32,7 +32,7 @@ describe("endpoint-media/lib/utils", () => {
     const { postTypes } = new JekyllPreset();
     const result = getPostTypeConfig("note", postTypes);
 
-    assert.equal(result.name, "Note");
+    assert.equal(result.post.url, "notes/{yyyy}/{MM}/{dd}/{slug}");
   });
 
   it("Renders relative path if at publication URL", () => {

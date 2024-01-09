@@ -49,7 +49,56 @@ export const defaultConfig = {
     locale: "en",
     me: undefined,
     postTemplate: undefined,
-    postTypes: [],
+    postTypes: [
+      {
+        type: "article",
+        name: "Article",
+      },
+      {
+        type: "note",
+        name: "Note",
+      },
+      {
+        type: "photo",
+        name: "Photo",
+      },
+      {
+        type: "video",
+        name: "Video",
+      },
+      {
+        type: "audio",
+        name: "Audio",
+      },
+      {
+        type: "bookmark",
+        name: "Bookmark",
+      },
+      {
+        type: "checkin",
+        name: "Checkin",
+      },
+      {
+        type: "event",
+        name: "Event",
+      },
+      {
+        type: "rsvp",
+        name: "RSVP",
+      },
+      {
+        type: "reply",
+        name: "Reply",
+      },
+      {
+        type: "repost",
+        name: "Repost",
+      },
+      {
+        type: "like",
+        name: "Like",
+      },
+    ],
     preset: undefined,
     slugSeparator: "-",
     storeMessageTemplate: (metaData) =>

@@ -13,7 +13,7 @@ describe("endpoint-media/lib/util", () => {
     const { postTypes } = new JekyllPreset();
     const result = getPostTypeConfig("note", postTypes);
 
-    assert.equal(result.name, "Note");
+    assert.equal(result.post.url, "notes/{yyyy}/{MM}/{dd}/{slug}");
   });
 
   it("Renders path from URI template and properties", async () => {
