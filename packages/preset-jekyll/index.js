@@ -74,13 +74,6 @@ export default class JekyllPreset {
         },
       },
       {
-        type: "checkin",
-        post: {
-          path: "_checkins/{yyyy}-{MM}-{dd}-{slug}.md",
-          url: "checkins/{yyyy}/{MM}/{dd}/{slug}",
-        },
-      },
-      {
         type: "event",
         post: {
           path: "_events/{yyyy}-{MM}-{dd}-{slug}.md",
@@ -146,7 +139,6 @@ export default class JekyllPreset {
       ...(properties.end && { end: properties.end }),
       ...(properties.rsvp && { rsvp: properties.rsvp }),
       ...(properties.location && { location: properties.location }),
-      ...(properties.checkin && { checkin: properties.checkin }),
       ...(properties.audio && { audio: properties.audio }),
       ...(properties.photo && { photo: properties.photo }),
       ...(properties.video && { video: properties.video }),

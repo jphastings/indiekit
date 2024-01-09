@@ -53,6 +53,6 @@ describe("indiekit/lib/post-types", () => {
     const result = getPostTypes(publication);
 
     assert.equal(result[0].name, "Article");
-    assert.equal(result[11].name, "Like");
+    assert.equal(result[10].name, "Like");
   });
 });
