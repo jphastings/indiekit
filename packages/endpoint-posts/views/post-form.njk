@@ -1,22 +1,5 @@
 {% extends "form.njk" %}
 
-{% set contentOptional =
-  postType !== "article" and
-  postType !== "note" and
-  postType !== "reply" %}
-{% set contentIgnored =
-  postType === "like"
-%}
-{% set nameOptional =
-  postType !== "article" and
-  postType !== "bookmark" %}
-{% set nameIgnored =
-  postType === "note" or
-  postType === "like" or
-  postType === "reply" or
-  postType === "rsvp"
-%}
-
 {% macro audioFieldset(index) %}
   {{ input({
     name: "audio[" + index + "]",
@@ -72,7 +55,7 @@
   {{ input({
     name: "type",
     type: "hidden",
-    value: "event" if postType === "event" else "entry"
+    value: h
   }) | indent(2) }}
 
   {{ input({
@@ -86,22 +69,24 @@
     type: "url",
     value: fieldData("bookmark-of").value,
     label: __("posts.form.bookmark-of.label"),
+    optional: not requiredProperties | includes("bookmark-of"),
     attributes: {
       placeholder: "https://"
     },
     errorMessage: fieldData("bookmark-of").errorMessage
-  }) | indent(2) if postType === "bookmark" }}
+  }) | indent(2) if properties | includes("bookmark-of") }}
 
   {{ input({
     name: "in-reply-to",
     type: "url",
     value: fieldData("in-reply-to").value,
     label: __("posts.form.in-reply-to.label"),
+    optional: not requiredProperties | includes("in-reply-to"),
     attributes: {
       placeholder: "https://"
     },
     errorMessage: fieldData("in-reply-to").errorMessage
-  }) | indent(2) if postType === "reply" or postType === "rsvp" }}
+  }) | indent(2) if properties | includes("in-reply-to") }}
 
   {{ radios({
     classes: "radios--inline",
@@ -110,6 +95,7 @@
     fieldset: {
       legend: __("posts.form.rsvp.label")
     },
+    optional: not requiredProperties | includes("rsvp"),
     items: [{
       label: __("posts.form.rsvp.yes"),
       value: "yes"
@@ -123,55 +109,57 @@
       label: __("posts.form.rsvp.interested"),
       value: "interested"
     }]
-  }) | indent(2) if postType === "rsvp" }}
+  }) | indent(2) if properties | includes("rsvp") }}
 
   {{ input({
     name: "like-of",
     type: "url",
     value: fieldData("like-of").value,
     label: __("posts.form.like-of.label"),
+    optional: not requiredProperties | includes("like-of"),
     attributes: {
       placeholder: "https://"
     },
     errorMessage: fieldData("like-of").errorMessage
-  }) | indent(2) if postType === "like" }}
+  }) | indent(2) if properties | includes("like-of") }}
 
   {{ input({
     name: "repost-of",
     type: "url",
     value: fieldData("repost-of").value,
     label: __("posts.form.repost-of.label"),
+    optional: not requiredProperties | includes("repost-of"),
     attributes: {
       placeholder: "https://"
     },
     errorMessage: fieldData("repost-of").errorMessage
-  }) | indent(2) if postType === "repost" }}
+  }) | indent(2) if properties | includes("repost-of") }}
 
   {{ input({
     name: "name",
     value: fieldData("name").value,
     label: __("posts.form.name.label"),
-    optional: nameOptional,
+    optional: not requiredProperties | includes("name"),
     errorMessage: fieldData("name").errorMessage
-  }) | indent(2) if not nameIgnored }}
+  }) | indent(2) if properties | includes("name") }}
 
   {{ textarea({
     name: "content",
     value: properties.content.text or fieldData("content").value,
     label: __("posts.form.content.label"),
-    optional: contentOptional,
+    optional: not requiredProperties | includes("content"),
     errorMessage: fieldData("content").errorMessage
-  }) if not contentIgnored }}
+  }) if properties | includes("content") }}
 
   {{ textarea({
     name: "summary",
     value: properties.summary,
     label: __("posts.form.summary.label"),
-    optional: true,
+    optional: not requiredProperties | includes("summary"),
     rows: 1
-  }) if postType === "article" }}
+  }) if properties | includes("summary") }}
 
-{% if postType === "audio" %}
+{% if properties | includes("audio") %}
 {% call addAnother({
   fieldset: { legend: __("posts.form.audio.label") },
   name: __("posts.form.audio.name")
@@ -184,7 +172,7 @@
 {% endcall %}
 {% endif %}
 
-{% if postType === "photo" %}
+{% if properties | includes("photo") %}
 {% call addAnother({
   fieldset: { legend: __("posts.form.photo.label") },
   name: __("posts.form.photo.name")
@@ -197,7 +185,7 @@
 {% endcall %}
 {% endif %}
 
-{% if postType === "video" %}
+{% if properties | includes("video") %}
 {% call addAnother({
   name: __("posts.form.video.name"),
   fieldset: { legend: __("posts.form.video.label") }
@@ -217,7 +205,7 @@
       legend: __("posts.form.mp-syndicate-to.label")
     },
     items: syndicationTargetItems
-  }) | indent(2) if syndicationTargetItems.length }}
+  }) | indent(2) if properties | includes("mp-syndicate-to") }}
 
   {% call details({
     open: showAdvancedOptions,
@@ -266,7 +254,7 @@
         label: __("posts.status.unlisted"),
         value: "unlisted"
       }]
-    }) | indent(4) }}
+    }) | indent(4) if properties | includes("visibility") }}
 
     {{ tagInput({
       name: "category",
@@ -278,16 +266,16 @@
         tag: __("posts.form.category.tag"),
         tags: __("posts.form.category.label") | lower
       }
-    }) | indent(4) }}
+    }) | indent(4) if properties | includes("category") }}
 
     {{ geoInput({
       name: "geo",
       value: fieldData("geo").value,
       label: __("posts.form.geo.label"),
       hint: __("posts.form.geo.hint", "50.8211, -0.1452"),
-      optional: true,
+      optional: not requiredProperties | includes("geo"),
       errorMessage: fieldData("geo").errorMessage
-    }) | indent(4) }}
+    }) | indent(4) if properties | includes("geo") }}
 
     {{ input({
       classes: "input--width-25",
@@ -295,7 +283,7 @@
       value: fieldData("mp-slug").value,
       label: __("posts.form.mp-slug.label"),
       optional: true
-    }) | indent(4) }}
+    }) | indent(4) if properties | includes("mp-slug") }}
   {% endcall %}
 {% endblock %}
 

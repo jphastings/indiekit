@@ -15,6 +15,9 @@ export const formController = {
     const { action, postsPath, postType, postTypeName, scope } =
       response.locals;
 
+    const { postTypes } = request.app.locals.publication;
+    const postTypeConfig = postTypes.find((item) => item.type === postType);
+
     if (scope && checkScope(scope, action)) {
       return response.render("post-form", {
         back:
@@ -30,6 +33,9 @@ export const formController = {
           `posts.${action}.title`,
           postTypeName.toLowerCase().replace("rsvp", "RSVP"),
         ),
+        h: postTypeConfig.h,
+        properties: postTypeConfig.properties,
+        requiredProperties: postTypeConfig["required-properties"],
       });
     }
 
