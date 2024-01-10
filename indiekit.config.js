@@ -28,10 +28,19 @@ const config = {
       {
         type: "like",
         name: "Favourite",
+        properties: ["like-of", "published"],
+        "required-properties": ["like-of", "published"],
       },
       {
-        type: "watch",
-        name: "Film",
+        type: "jam",
+        name: "Jam",
+        h: "entry",
+        properties: ["content", "mp-syndicate-to", "post-status", "published"],
+        "required-properties": ["content", "published"],
+        post: {
+          path: "_jams/{yyyy}-{MM}-{dd}-{slug}.md",
+          url: "jams/{yyyy}/{MM}/{dd}/{slug}",
+        },
       },
     ],
   },
